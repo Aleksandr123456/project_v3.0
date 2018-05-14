@@ -4,8 +4,8 @@ public class Enemy {
     private Game game;
     private float x, y;
     private int width, height;
-    private double speed = 1;
-    private double speed1 = 1;
+    private double speed = 3;
+    private double speed1 = 3;
 
     public Enemy(Game game, int x, int y){
         this.game = game;
@@ -40,5 +40,13 @@ public class Enemy {
 
     public float getY() {
         return y;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }

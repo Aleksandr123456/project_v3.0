@@ -131,4 +131,8 @@ public class Game implements Runnable{
     public State getGameState() {
         return gameState;
     }
+
+    public void end(){
+        running = false;
+    }
 }

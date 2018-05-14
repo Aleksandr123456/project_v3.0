@@ -57,4 +57,12 @@ public class Player {
     public void setShotMade(boolean shotMade) {
         this.shotMade = shotMade;
     }
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
 }
