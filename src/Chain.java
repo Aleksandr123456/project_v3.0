@@ -3,7 +3,7 @@ import java.awt.*;
 public class Chain {
     private int x, y;
     private int width = 20, height = 0;
-    private int speed = 2;
+    private int speed = 4;
     private Rectangle chain;
     private GameState game;
 
@@ -22,10 +22,11 @@ public class Chain {
             y -= speed;
             height += speed;
         }
+
     }
 
     public void draw(Graphics g){
-        g.drawRect(x,y,width,height);
+        g.drawImage(Assets.player,(int) x,(int) y,null);
     }
 
     public int getHeight() {
@@ -35,4 +36,13 @@ public class Chain {
     public void setHeight(int height) {
         this.height = height;
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
 }
