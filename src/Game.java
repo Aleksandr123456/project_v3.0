@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
 public class Game implements Runnable{
 
@@ -14,27 +13,32 @@ public class Game implements Runnable{
     private BufferStrategy bs;
     private Graphics g;
 
+    private KeyManager keyManager;
 
-    private BufferedImage testImage;
-    private SpriteSheet sheet;
-
-    int x = 0;
+    private State gameState, menuState, settingsState;
 
     public Game(String title, int width, int height){
         this.width = width;
         this.height = height;
         this.title = title;
+
+        keyManager = new KeyManager();
     }
 
 
     private void init(){
         display =  new Display(title,width,height);
+        display.getCanvas().addKeyListener(keyManager);
         Assets.init();
 
+        gameState = new GameState(this);
+
+        State.setState(gameState);
     }
 
     private void update(){
-        x += 1;
+        keyManager.update();
+        State.getCurrentState().update();
     }
 
     private void render() {
@@ -46,12 +50,13 @@ public class Game implements Runnable{
         }
 
         g = bs.getDrawGraphics();
-        //Cleat screen
+        //Clear screen
         g.clearRect(0, 0, width, height);
         //Draw here
 
         g.drawImage(Assets.background,0 ,0 ,null);
-        g.drawImage(Assets.player,x,10, null);
+        if(State.getCurrentState() != null )
+            State.getCurrentState().draw(g);
 
         //End drawing
         bs.show();
@@ -103,4 +108,15 @@ public class Game implements Runnable{
         }
     }
 
+    public KeyManager getKeyManager() {
+        return keyManager;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
 }
