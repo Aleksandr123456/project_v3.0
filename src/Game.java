@@ -39,8 +39,11 @@ public class Game implements Runnable{
     private void update(){
         keyManager.update();
         State.getCurrentState().update();
+
+
     }
 
+    int h = 200,y = 200;
     private void render() {
         bs = display.getCanvas().getBufferStrategy();
 
@@ -118,5 +121,9 @@ public class Game implements Runnable{
 
     public int getHeight() {
         return height;
+    }
+
+    public State getGameState() {
+        return gameState;
     }
 }

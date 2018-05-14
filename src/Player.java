@@ -6,6 +6,9 @@ public class Player {
     private int width, height;
     private int speed = 4;
 
+    private Chain chain;
+    private boolean shotMade = false;
+
     public Player(Game game, int x, int y){
         this.game = game;
         this.x = x;
@@ -24,7 +27,10 @@ public class Player {
     }
 
     private void shoot() {
-
+        if(!shotMade) {
+            shotMade = true;
+            chain = new Chain((GameState) game.getGameState(),(int) x, (int) y);
+        }
     }
 
     public void update(){
@@ -38,5 +44,17 @@ public class Player {
 
     public void draw(Graphics g){
         g.drawImage(Assets.player,(int) x,(int) y,null);
+    }
+
+    public Chain getChain() {
+        return chain;
+    }
+
+    public boolean isShotMade() {
+        return shotMade;
+    }
+
+    public void setShotMade(boolean shotMade) {
+        this.shotMade = shotMade;
     }
 }
