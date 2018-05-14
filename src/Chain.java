@@ -12,7 +12,7 @@ public class Chain {
         this.x = x;
         this.y = y;
 
-        chain = new Rectangle(x, y,0,0);
+        chain = new Rectangle(x, y,width,0);
     }
 
     public void update(){
@@ -23,10 +23,13 @@ public class Chain {
             height += speed;
         }
 
+        chain.y = y;
+        chain.height = height;
     }
 
     public void draw(Graphics g){
-        g.drawImage(Assets.player,(int) x,(int) y,null);
+        g.fillRect(chain.x,
+                   chain.y,chain.width,chain.height + game.getPlayer().getHeight());
     }
 
     public int getHeight() {
@@ -45,4 +48,7 @@ public class Chain {
         return y;
     }
 
+    public Rectangle getChain() {
+        return chain;
+    }
 }
