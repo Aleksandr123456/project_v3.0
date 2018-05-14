@@ -3,6 +3,7 @@ import java.awt.*;
 public class GameState extends State{
     private Player player;
     private Enemy enemy;
+    private Chain chain;
 
     private boolean isRunning = true;
 
@@ -16,9 +17,10 @@ public class GameState extends State{
     public void update() {
         player.update();
         enemy.update();
-        if (player.isShotMade())
+        if (player.isShotMade()) {
             player.getChain().update();
-        
+            check(enemy.getX(),player.getChain().getX(),enemy.getY(),player.getChain().getY());
+        }
         check(player.getX(),enemy.getX(),player.getY(),enemy.getY());
 
     }
@@ -36,8 +38,8 @@ public class GameState extends State{
     }
 
     public void check(float playerX, float enemyX, float playerY, float enemyY){
-        if ((enemyY > playerY - 24 && enemyX > playerX - 24 && enemyX < playerX+24)) {
-            Game.end();
+        if (( enemyY > playerY - 48 && enemyY < playerY+48 && enemyX > playerX - 48 && enemyX < playerX+48)) {
+            System.out.println("hui");
         }
     }
 }
