@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferStrategy;
 
-public class Game implements Runnable,ActionListener{
+public class Game implements Runnable{
 
     private Display display;
     private Thread thread;
@@ -19,17 +19,8 @@ public class Game implements Runnable,ActionListener{
     private Graphics g;
 
     private KeyManager keyManager;
-
-<<<<<<< HEAD
     private State gameState, menuState, settingsState;
-=======
-    private BufferedImage testImage;
-    private SpriteSheet sheet;
 
-    int x = 0;
-    int y = 0;
-
->>>>>>> 35661e9a5613b00c4a2d3bfaad257ca6cf3889df
 
     public Game(String title, int width, int height){
         this.width = width;
@@ -72,19 +63,9 @@ public class Game implements Runnable,ActionListener{
         //Draw here
 
         g.drawImage(Assets.background,0 ,0 ,null);
-<<<<<<< HEAD
+
         if(State.getCurrentState() != null )
             State.getCurrentState().draw(g);
-=======
-        g.drawImage(Assets.player,x,y, null);
-
-        Circle c = new Circle();
-        c.setCenterX(20);
-        c.setCenterY(50);
-        c.setRadius(20);
-
-
->>>>>>> 35661e9a5613b00c4a2d3bfaad257ca6cf3889df
 
         //End drawing
         bs.show();
@@ -101,29 +82,17 @@ public class Game implements Runnable,ActionListener{
         long now;
         long lastTime = System.nanoTime();
 
-        long timer = 0;
-        int ticks = 0;
-
         while (running) {
             now = System.nanoTime();
             delta += (now - lastTime) / timePerUpdate;
-            timer += now - lastTime;
             lastTime = now;
 
             if (delta >= 1) {
                 update();
                 render();
-                ticks++;
                 delta--;
             }
-
-            if(timer >= 1000000000){
-                System.out.println(" " +ticks);
-                ticks = 0;
-                timer = 0;
-            }
         }
-
         stop();
     }
 
@@ -147,7 +116,6 @@ public class Game implements Runnable,ActionListener{
         }
     }
 
-<<<<<<< HEAD
     public KeyManager getKeyManager() {
         return keyManager;
     }
@@ -162,10 +130,5 @@ public class Game implements Runnable,ActionListener{
 
     public State getGameState() {
         return gameState;
-=======
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
->>>>>>> 35661e9a5613b00c4a2d3bfaad257ca6cf3889df
     }
 }
