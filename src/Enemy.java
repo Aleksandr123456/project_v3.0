@@ -1,3 +1,5 @@
+import javafx.scene.shape.Circle;
+
 import java.awt.*;
 
 public abstract class Enemy {
@@ -7,6 +9,8 @@ public abstract class Enemy {
     protected double speedX = 4;
     protected double speedY = 4;
     protected Rectangle enemy;
+
+
 
     public Enemy(Game game, int x, int y){
         this.game = game;
@@ -47,4 +51,6 @@ public abstract class Enemy {
     public Rectangle getEnemy() {
         return enemy;
     }
+
 }
+

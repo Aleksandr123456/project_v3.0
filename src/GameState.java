@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class GameState extends State{
     private Player player;
-    private Enemy enemy;
+    private Enemy enemy, alamenemy;
 
     private boolean isRunning = true;
 
@@ -21,6 +21,7 @@ public class GameState extends State{
             player.getChain().update();
             collisionChainEnemy(player.getChain(), enemy);
         }
+        collisionPlayerEnemy(player, enemy);
 
         collisionPlayerEnemy(player, enemy);
     }
@@ -41,6 +42,7 @@ public class GameState extends State{
 
         if(chain.getChain().intersects(enemy.getEnemy())){
             System.out.println("CHAIN HIT ENEMY");
+            enemy.setEnemyHealt(enemy.getEnemyHealt()-1);
             this.getPlayer().setShotMade(false);
         }
     }
@@ -51,4 +53,5 @@ public class GameState extends State{
             System.out.println("ENEMY HIT HERO");
         }
     }
+
 }
