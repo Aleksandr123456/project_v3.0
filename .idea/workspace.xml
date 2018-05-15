@@ -3,18 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f7278352-c2cc-42e0-8b80-03596f139adf" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Assets.class" afterPath="$PROJECT_DIR$/out/production/Game/Assets.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Chain.class" afterPath="$PROJECT_DIR$/out/production/Game/Chain.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Enemy.class" afterPath="$PROJECT_DIR$/out/production/Game/Enemy.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/GameState.class" afterPath="$PROJECT_DIR$/out/production/Game/GameState.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Player.class" afterPath="$PROJECT_DIR$/out/production/Game/Player.class" />
-      <change beforePath="$PROJECT_DIR$/resorces/textures/1.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/Assets.java" afterPath="$PROJECT_DIR$/src/Assets.java" />
-      <change beforePath="$PROJECT_DIR$/src/Chain.java" afterPath="$PROJECT_DIR$/src/Chain.java" />
-      <change beforePath="$PROJECT_DIR$/src/Enemy.java" afterPath="$PROJECT_DIR$/src/Enemy.java" />
-      <change beforePath="$PROJECT_DIR$/src/GameState.java" afterPath="$PROJECT_DIR$/src/GameState.java" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" afterPath="$PROJECT_DIR$/src/Player.java" />
-      <change beforePath="$PROJECT_DIR$/src/State.java" afterPath="$PROJECT_DIR$/src/State.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -132,7 +120,7 @@
       <file leaf-file-name="Enemy.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Enemy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-536">
+            <state relative-caret-position="-311">
               <caret line="12" column="48" lean-forward="false" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
               <folding>
                 <element signature="e#1033#1034#0" expanded="true" />
@@ -961,7 +949,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Enemy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-536">
+        <state relative-caret-position="-311">
           <caret line="12" column="48" lean-forward="false" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
           <folding>
             <element signature="e#1033#1034#0" expanded="true" />
