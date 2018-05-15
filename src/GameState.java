@@ -16,13 +16,14 @@ public class GameState extends State{
     public void update() {
         player.update();
         enemy.update();
+
         if (player.isShotMade()) {
             player.getChain().update();
             collisionChainEnemy(player.getChain(), enemy);
         }
-
         collisionPlayerEnemy(player, enemy);
 
+        collisionPlayerEnemy(player, enemy);
     }
 
     @Override
@@ -42,7 +43,6 @@ public class GameState extends State{
         if(chain.getChain().intersects(enemy.getEnemy())){
             System.out.println("CHAIN HIT ENEMY");
             enemy.setEnemyHealt(enemy.getEnemyHealt()-1);
-
             this.getPlayer().setShotMade(false);
         }
     }

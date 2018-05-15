@@ -8,6 +8,7 @@ public class Enemy {
     private double speed1 = 1;
     private Rectangle enemy;
 
+
     private int enemyHealt = 1;
 
     public Enemy(Game game, int x, int y){
@@ -16,6 +17,8 @@ public class Enemy {
         this.y = y;
         this.width = Assets.enemy.getWidth();
         this.height = Assets.enemy.getHeight();
+        this.width = Assets.player.getWidth();
+        this.height = Assets.player.getHeight();
         this.enemy = new Rectangle(x,y,width,height);
     }
 
@@ -77,3 +80,4 @@ public class Enemy {
         this.enemyHealt = enemyHealt;
     }
 }
+

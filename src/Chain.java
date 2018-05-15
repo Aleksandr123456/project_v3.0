@@ -28,8 +28,10 @@ public class Chain {
     }
 
     public void draw(Graphics g){
+
         g.fillRect(chain.x+40,
                 chain.y+40,chain.width,chain.height + game.getPlayer().getHeight());
+        
     }
 
     public int getHeight() {
