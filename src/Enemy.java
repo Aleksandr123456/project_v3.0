@@ -1,3 +1,5 @@
+import javafx.scene.shape.Circle;
+
 import java.awt.*;
 
 public class Enemy {
@@ -7,6 +9,7 @@ public class Enemy {
     private double speed = 1;
     private double speed1 = 1;
     private Rectangle enemy;
+    private Circle circle;
 
 
     private int enemyHealt = 1;
@@ -17,8 +20,8 @@ public class Enemy {
         this.y = y;
         this.width = Assets.enemy.getWidth();
         this.height = Assets.enemy.getHeight();
-        this.width = Assets.player.getWidth();
-        this.height = Assets.player.getHeight();
+        this.width = Assets.enemy.getWidth();
+        this.height = Assets.enemy.getHeight();
         this.enemy = new Rectangle(x,y,width,height);
     }
 
