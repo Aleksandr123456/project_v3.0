@@ -2,8 +2,8 @@ import java.awt.*;
 
 public class Chain {
     private int x, y;
-    private int width = 20, height = 0;
-    private int speed = 4;
+    private int width = 5, height = 0;
+    private int speed = 9;
     private Rectangle chain;
     private GameState game;
 
@@ -28,8 +28,9 @@ public class Chain {
     }
 
     public void draw(Graphics g){
-        g.fillRect(chain.x,
-                   chain.y,chain.width,chain.height + game.getPlayer().getHeight());
+        g.setColor(Color.BLUE);
+        g.fillRect(chain.x + game.getPlayer().getWidth() / 2 - width / 2,
+                chain.y,chain.width,chain.height + game.getPlayer().getHeight());
     }
 
     public int getHeight() {

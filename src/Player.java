@@ -1,6 +1,10 @@
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Player {
+    private Animation animationLeft;
+    private Animation animationRight;
+
     private Game game;
     private float x, y;
     private int width, height;
@@ -14,9 +18,12 @@ public class Player {
         this.game = game;
         this.x = x;
         this.y = y;
-        this.width = Assets.player.getWidth();
-        this.height = Assets.player.getHeight();
+        this.width = Assets.getPlayer().getWidth();
+        this.height = Assets.getPlayer().getHeight();
         this.player = new Rectangle(x,y,width,height);
+
+        animationLeft = new Animation(160, Assets.getPlayerRunLeft());
+        animationRight = new Animation(160, Assets.getPlayerRunRight());
     }
 
     private void moveRight(){
@@ -37,6 +44,9 @@ public class Player {
     }
 
     public void update(){
+        animationLeft.update();
+        animationRight.update();
+
         if(game.getKeyManager().isLeft())
             moveLeft();
         if(game.getKeyManager().isRight())
@@ -48,7 +58,15 @@ public class Player {
     }
 
     public void draw(Graphics g){
-        g.drawImage(Assets.player,(int) x,(int) y,null);
+        g.drawImage(getCurrentImage(),(int) x,(int) y,null);
+    }
+
+    public BufferedImage getCurrentImage(){
+        if(game.getKeyManager().isLeft())
+            return animationLeft.getCurrentImage();
+        if(game.getKeyManager().isRight())
+            return animationRight.getCurrentImage();
+        return Assets.getPlayer();
     }
 
     public Chain getChain() {

@@ -8,8 +8,8 @@ public class GameState extends State{
 
     public GameState(Game game){
         super(game);
-        player = new Player(game,200,game.getHeight() - Assets.player.getHeight());
-        enemy = new Enemy(game,100,70);
+        player = new Player(game,200,game.getHeight() - Assets.getPlayer().getHeight());
+        enemy = new Enemy01(game,100,70);
     }
 
     @Override
@@ -27,10 +27,10 @@ public class GameState extends State{
 
     @Override
     public void draw(Graphics g) {
-        player.draw(g);
-        enemy.draw(g);
         if(player.isShotMade())
             player.getChain().draw(g);
+        player.draw(g);
+        enemy.draw(g);
     }
 
     public Player getPlayer() {
