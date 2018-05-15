@@ -1,12 +1,12 @@
 import java.awt.*;
 
 public abstract class State {
-    protected Game Game;
+    protected Game game;
 
     private static State currentState = null;
 
-    public State(Game Game){
-        this.Game = Game;
+    public State(Game game){
+        this.game = game;
     }
 
     public static void setState(State state){

@@ -2,8 +2,7 @@ import java.awt.*;
 
 public class GameState extends State{
     private Player player;
-    private Enemy enemy;
-    private Chain chain;
+    private Enemy enemy, alamenemy;
 
     private boolean isRunning = true;
 
@@ -19,9 +18,10 @@ public class GameState extends State{
         enemy.update();
         if (player.isShotMade()) {
             player.getChain().update();
-            check(enemy.getX(),player.getChain().getX(),enemy.getY(),player.getChain().getY());
+            collisionChainEnemy(player.getChain(), enemy);
         }
-        check(player.getX(),enemy.getX(),player.getY(),enemy.getY());
+
+        collisionPlayerEnemy(player, enemy);
 
     }
 
@@ -37,9 +37,21 @@ public class GameState extends State{
         return player;
     }
 
-    public void check(float playerX, float enemyX, float playerY, float enemyY){
-        if (( enemyY > playerY - 48 && enemyY < playerY+48 && enemyX > playerX - 48 && enemyX < playerX+48)) {
-            System.out.println("hui");
+    public void collisionChainEnemy(Chain chain, Enemy enemy){
+
+        if(chain.getChain().intersects(enemy.getEnemy())){
+            System.out.println("CHAIN HIT ENEMY");
+            enemy.setEnemyHealt(enemy.getEnemyHealt()-1);
+
+            this.getPlayer().setShotMade(false);
         }
     }
+
+    public void collisionPlayerEnemy(Player player, Enemy enemy){
+
+        if(player.getPlayer().intersects(enemy.getEnemy())){
+            System.out.println("ENEMY HIT HERO");
+        }
+    }
+
 }

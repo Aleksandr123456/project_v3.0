@@ -5,6 +5,8 @@ public class Player {
     private float x, y;
     private int width, height;
     private int speed = 4;
+    private Rectangle player;
+    private int playerHealth = 3;
 
     private Chain chain;
     private boolean shotMade = false;
@@ -14,6 +16,8 @@ public class Player {
         this.x = x;
         this.y = y;
         this.width = Assets.player.getWidth();
+        this.height = Assets.player.getHeight();
+        this.player = new Rectangle(x,y,width,height);
     }
 
     private void moveRight(){
@@ -40,6 +44,8 @@ public class Player {
             moveRight();
         if(game.getKeyManager().isUp())
             shoot();
+
+        player.x = (int) x;
     }
 
     public void draw(Graphics g){
@@ -64,5 +70,26 @@ public class Player {
 
     public float getY() {
         return y;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public Rectangle getPlayer() {
+        return player;
+    }
+
+    public void setPlayerHealth(int playerHealth) {
+        this.playerHealth = playerHealth;
+    }
+
+    public int getPlayerHealth() {
+
+        return playerHealth;
     }
 }
