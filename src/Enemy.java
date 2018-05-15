@@ -10,7 +10,7 @@ public class Enemy {
 
     private int enemyHealt = 1;
 
-    public Enemy(Game game, int x, int y, String image){
+    public Enemy(Game game, int x, int y){
         this.game = game;
         this.x = x;
         this.y = y;
