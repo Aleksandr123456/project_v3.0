@@ -42,7 +42,6 @@ public class GameState extends State{
 
         if(chain.getChain().intersects(enemy.getEnemy())){
             System.out.println("CHAIN HIT ENEMY");
-            enemy.setEnemyHealt(enemy.getEnemyHealt()-1);
             this.getPlayer().setShotMade(false);
         }
     }

@@ -31,10 +31,6 @@ public class Chain {
         g.setColor(Color.BLUE);
         g.fillRect(chain.x + game.getPlayer().getWidth() / 2 - width / 2,
                 chain.y,chain.width,chain.height + game.getPlayer().getHeight());
-
-        g.fillRect(chain.x+40,
-                chain.y+40,chain.width,chain.height + game.getPlayer().getHeight());
-        
     }
 
     public int getHeight() {
