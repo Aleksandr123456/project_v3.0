@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferStrategy;
 
-public class Game implements Runnable{
+public class Game{
 
     private Display display;
     private Thread thread;
@@ -93,27 +93,14 @@ public class Game implements Runnable{
                 delta--;
             }
         }
-        stop();
+        System.exit(1);
     }
 
     public synchronized void start(){
         if (running)
             return;
         running = true;
-        thread = new Thread(this);
-        thread.start();
-    }
-
-    public synchronized void stop(){
-        if (!running)
-            return;
-        running = false;
-
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        run();
     }
 
     public KeyManager getKeyManager() {
