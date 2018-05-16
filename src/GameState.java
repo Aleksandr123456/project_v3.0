@@ -3,7 +3,7 @@ import java.awt.*;
 public class GameState extends State{
     private Player player;
     private Enemy enemy;
-    private int score = 0;
+    public static int score = 0;
 
     public GameState(Game game){
         super(game);
