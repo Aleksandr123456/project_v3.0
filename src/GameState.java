@@ -3,6 +3,7 @@ import java.awt.*;
 public class GameState extends State{
     private Player player;
     private Enemy enemy;
+    private int score = 0;
 
     public GameState(Game game){
         super(game);
@@ -32,6 +33,11 @@ public class GameState extends State{
 
         player.draw(g);
         enemy.draw(g);
+
+        Font font = new Font("Serif", Font.PLAIN, 50);
+        g.setFont(font);
+        g.setColor(Color.CYAN);
+        g.drawString("Score " + score, 0,50);
     }
 
     public Player getPlayer() {
@@ -42,6 +48,7 @@ public class GameState extends State{
 
         if(chain.getChain().intersects(enemy.getEnemy())){
             System.out.println("CHAIN HIT ENEMY");
+            score += 1;
             this.getPlayer().setShotMade(false);
         }
     }
