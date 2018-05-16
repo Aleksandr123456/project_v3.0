@@ -22,8 +22,9 @@ public class Game{
 
     public static State gameState;
     public static State menuState;
+    public static  State settingsState;
 
-    public static boolean menuSTATE = true;
+
 
     public Game(String title){
         this.width = 1024;
@@ -44,6 +45,7 @@ public class Game{
 
         menuState = new MenuState(this);
         gameState = new GameState(this);
+        settingsState = new SettingsState(this);
         State.setState(menuState);
 }
 
@@ -74,6 +76,9 @@ public class Game{
             g.drawImage(Assets.background, 0, 0, null);
         }
 
+        if (State.getCurrentState() == settingsState){
+            g.drawImage(Assets.settings_background,0,0,null);
+        }
         if(State.getCurrentState() != null )
             State.getCurrentState().draw(g);
 
@@ -85,8 +90,12 @@ public class Game{
     public void run() {
 
         init();
+<<<<<<< HEAD
 
         int fps = 60;
+=======
+        int fps = 120;
+>>>>>>> ccf333c7674218d0e444bc4c1d601e0530429452
         double timePerUpdate = 1000000000 / fps;
         double delta = 0;
         long now;
@@ -111,6 +120,21 @@ public class Game{
             return;
         running = true;
         run();
+<<<<<<< HEAD
+=======
+    }
+
+    public synchronized void stop(){
+        if (!running)
+            return;
+        running = false;
+
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+>>>>>>> ccf333c7674218d0e444bc4c1d601e0530429452
     }
 
     public KeyManager getKeyManager() {
@@ -133,5 +157,8 @@ public class Game{
         running = false;
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ccf333c7674218d0e444bc4c1d601e0530429452
 }
