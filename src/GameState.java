@@ -27,6 +27,7 @@ public class GameState extends State{
 
     @Override
     public void draw(Graphics g) {
+
         if(player.isShotMade())
             player.getChain().draw(g);
 
@@ -38,6 +39,7 @@ public class GameState extends State{
         g.setFont(font);
         g.setColor(Color.CYAN);
         g.drawString("Score " + score, 0,50);
+
     }
 
     public Player getPlayer() {
@@ -56,6 +58,7 @@ public class GameState extends State{
     public void collisionPlayerEnemy(Player player, Enemy enemy){
 
         if(player.getPlayer().intersects(enemy.getEnemy())){
+            Player.alive = false;
             System.out.println("ENEMY HIT HERO");
 
         }

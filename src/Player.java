@@ -14,6 +14,9 @@ public class Player {
     private Chain chain;
     private boolean shotMade = false;
 
+    public static Rectangle yes = new Rectangle(280,240,150,70);
+    public static Rectangle no = new Rectangle(570,240,150,70);
+    public static boolean alive = true;
 
 
     public Player(Game game, int x, int y){
@@ -61,8 +64,25 @@ public class Player {
     }
 
     public void draw(Graphics g){
-        g.drawImage(getCurrentImage(),(int) x,(int) y,null);
+        Graphics2D g2d = (Graphics2D) g;
+
+        if (alive) {
+            g.drawImage(getCurrentImage(), (int) x, (int) y, null);
+        }
+        if (!alive) {
+            x = -200;
+            Font font = new Font("Serif", Font.PLAIN, 70);
+            g.setFont(font);
+            g.setColor(Color.CYAN);
+            g.drawString("-----------You lost-------------", 110, 100);
+            g.drawString("Save?",415,170);
+            g.drawString("YES",280,300);
+            g.drawString("NO",590,300);
+            g2d.draw(yes);
+            g2d.draw(no);
+        }
     }
+
 
     public BufferedImage getCurrentImage(){
         if(game.getKeyManager().isLeft())
