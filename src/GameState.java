@@ -1,3 +1,6 @@
+
+import javafx.scene.media.AudioClip;
+
 import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,11 +11,9 @@ public class GameState extends State{
     private List<Enemy> newEnemies = new LinkedList<>();
     private Enemy deadEnemy;
     public static int score = 0;
-
     public GameState(Game game){
         super(game);
         player = new Player(game,200,game.getHeight() - Assets.getPlayer().getHeight());
-
         Enemy enemy1 = new Enemy01(game,100,game.getHeight() - 100);
         Enemy enemy2 = new Enemy02(game, 400, game.getHeight() - 200);
         enemies.add(enemy1);

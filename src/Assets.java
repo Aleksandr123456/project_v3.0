@@ -1,5 +1,7 @@
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.net.URL;
 
 public class Assets {
 
@@ -9,6 +11,7 @@ public class Assets {
     private static BufferedImage player;
 
     public static void init() {
+
         SpriteSheet playerImages = new SpriteSheet(ImageLoader.loadImage("/textures/player_animation.png"));
 
         playerRunLeft = new BufferedImage[6];
@@ -28,7 +31,7 @@ public class Assets {
         playerRunRight[5] = playerImages.crop(240,70,30,70);
 
         player = playerImages.crop(0,0,30,70);
-        background = ImageLoader.loadImage("/textures/back01.jpg");
+        background = ImageLoader.loadImage("/textures/back02.jpg");
         menu_background = ImageLoader.loadImage("/textures/menu_back.jpg");
         settings_background = ImageLoader.loadImage("/textures/settings_back.jpg");
     }

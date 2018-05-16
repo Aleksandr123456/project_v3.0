@@ -1,10 +1,10 @@
-import javafx.scene.shape.Circle;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferStrategy;
+import java.io.File;
 
 public class Game{
 
@@ -24,8 +24,6 @@ public class Game{
     public static State menuState;
     public static  State settingsState;
 
-
-
     public Game(String title){
         this.width = 1024;
         this.height = 512;
@@ -33,7 +31,6 @@ public class Game{
 
         keyManager = new KeyManager();
         mouseInput = new MouseInput();
-
         init();
     }
 
@@ -43,11 +40,14 @@ public class Game{
         display.getCanvas().addKeyListener(keyManager);
         display.getCanvas().addMouseListener(mouseInput);
         Assets.init();
-
+        
+        AudioClip game_sound = new AudioClip(this.getClass().getResource("/textures/game_sound.mp3").toExternalForm());
+        game_sound.setVolume(0.5);
+        game_sound.play();
 
         menuState = new MenuState(this);
         gameState = new GameState(this);
-        settingsState = new SettingsState(this);
+        settingsState = new TopState(this);
         State.setState(menuState);
 }
 
@@ -113,6 +113,7 @@ public class Game{
     }
 
     public synchronized void start(){
+
         if (running)
             return;
         running = true;
@@ -138,4 +139,5 @@ public class Game{
     public void end(){
         running = false;
     }
+
 }

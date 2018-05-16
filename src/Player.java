@@ -1,3 +1,5 @@
+import javafx.scene.media.AudioClip;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -45,6 +47,10 @@ public class Player {
         if(!shotMade) {
             shotMade = true;
             chain = new Chain((GameState) game.getGameState(),(int) x, (int) y);
+            AudioClip mApplause = new AudioClip(this.getClass().getResource("/textures/shoot.mp3").toExternalForm());
+            mApplause.setVolume(0.2);
+            mApplause.play();
+
         }
     }
 
@@ -71,8 +77,8 @@ public class Player {
             x = -200;
             Font font = new Font("Serif", Font.PLAIN, 70);
             g.setFont(font);
-            g.setColor(Color.CYAN);
-            g.drawString("-----------You lost-------------", 110, 100);
+            g.setColor(Color.black);
+            g.drawString("---------------YOU LOST----------------", 0, 100);
             g.drawString("Save?",415,170);
             g.drawString("YES",280,300);
             g.drawString("NO",590,300);
