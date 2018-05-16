@@ -1,9 +1,4 @@
-import javafx.scene.input.MouseEvent;
-
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-
-import static com.sun.java.accessibility.util.AWTEventMonitor.addMouseListener;
 
 public class MenuState extends State {
 
@@ -18,13 +13,11 @@ public class MenuState extends State {
 
     }
 
-
-    @Override
     public void update() {
-
+        getColor();
+        setColor(color);
     }
 
-    @Override
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
 
@@ -44,7 +37,6 @@ public class MenuState extends State {
 
     public static void setColor(Color color) {
         MenuState.color = color;
-        System.out.println(color);
     }
     public static Color getColor() {
         return color;

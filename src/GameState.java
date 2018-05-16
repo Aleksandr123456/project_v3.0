@@ -19,6 +19,7 @@ public class GameState extends State{
             player.getChain().update();
             collisionChainEnemy(player.getChain(), enemy);
         }
+
         collisionPlayerEnemy(player, enemy);
 
     }
@@ -27,6 +28,8 @@ public class GameState extends State{
     public void draw(Graphics g) {
         if(player.isShotMade())
             player.getChain().draw(g);
+
+
         player.draw(g);
         enemy.draw(g);
     }
@@ -47,6 +50,7 @@ public class GameState extends State{
 
         if(player.getPlayer().intersects(enemy.getEnemy())){
             System.out.println("ENEMY HIT HERO");
+
         }
     }
 

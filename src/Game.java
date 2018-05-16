@@ -23,8 +23,9 @@ public class Game{
 
     public static State gameState;
     public static State menuState;
+    public static  State settingsState;
 
-    public static boolean menuSTATE = true;
+
 
     public Game(String title, int width, int height){
         this.width = width;
@@ -45,6 +46,7 @@ public class Game{
 
         menuState = new MenuState(this);
         gameState = new GameState(this);
+        settingsState = new SettingsState(this);
         State.setState(menuState);
 }
 
@@ -76,6 +78,9 @@ public class Game{
             g.drawImage(Assets.background, 0, 0, null);
         }
 
+        if (State.getCurrentState() == settingsState){
+            g.drawImage(Assets.settings_background,0,0,null);
+        }
         if(State.getCurrentState() != null )
             State.getCurrentState().draw(g);
 
@@ -87,7 +92,6 @@ public class Game{
     public void run() {
 
         init();
-
         int fps = 120;
         double timePerUpdate = 1000000000 / fps;
         double delta = 0;
@@ -146,4 +150,5 @@ public class Game{
     public void end(){
         running = false;
     }
+
 }

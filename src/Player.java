@@ -14,6 +14,8 @@ public class Player {
     private Chain chain;
     private boolean shotMade = false;
 
+
+
     public Player(Game game, int x, int y){
         this.game = game;
         this.x = x;
@@ -53,7 +55,8 @@ public class Player {
             moveRight();
         if(game.getKeyManager().isUp())
             shoot();
-
+        if(game.getKeyManager().escape())
+            State.setState(Game.menuState);
         player.x = (int) x;
     }
 
@@ -79,14 +82,6 @@ public class Player {
 
     public void setShotMade(boolean shotMade) {
         this.shotMade = shotMade;
-    }
-
-    public float getX() {
-        return x;
-    }
-
-    public float getY() {
-        return y;
     }
 
     public int getWidth() {
