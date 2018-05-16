@@ -4,14 +4,10 @@ import java.util.List;
 
 public class GameState extends State{
     private Player player;
-<<<<<<< HEAD
     private List<Enemy> enemies = new LinkedList<>();
     private List<Enemy> newEnemies = new LinkedList<>();
     private Enemy deadEnemy;
-=======
-    private Enemy enemy;
     public static int score = 0;
->>>>>>> ccf333c7674218d0e444bc4c1d601e0530429452
 
     public GameState(Game game){
         super(game);
@@ -36,7 +32,6 @@ public class GameState extends State{
 
         if (player.isShotMade()) {
             player.getChain().update();
-<<<<<<< HEAD
 
             for(Enemy enemy: enemies)
                 collisionChainEnemy(player.getChain(), enemy);
@@ -53,13 +48,7 @@ public class GameState extends State{
         }
         for (Enemy enemy: enemies)
             collisionPlayerEnemy(player, enemy);
-=======
-            collisionChainEnemy(player.getChain(), enemy);
-        }
 
-        collisionPlayerEnemy(player, enemy);
-
->>>>>>> ccf333c7674218d0e444bc4c1d601e0530429452
     }
 
     @Override
@@ -68,21 +57,16 @@ public class GameState extends State{
         if(player.isShotMade())
             player.getChain().draw(g);
 
-
         player.draw(g);
-<<<<<<< HEAD
 
         for(Enemy enemy: enemies)
             enemy.draw(g);
-=======
-        enemy.draw(g);
 
         Font font = new Font("Serif", Font.PLAIN, 50);
         g.setFont(font);
         g.setColor(Color.CYAN);
         g.drawString("Score " + score, 0,50);
 
->>>>>>> ccf333c7674218d0e444bc4c1d601e0530429452
     }
 
     public Player getPlayer() {
@@ -92,15 +76,11 @@ public class GameState extends State{
     public void collisionChainEnemy(Chain chain, Enemy enemy){
 
         if(chain.getChain().intersects(enemy.getEnemy())){
-<<<<<<< HEAD
             deadEnemy = enemy;
 
             newEnemies.add(new Enemy01(game, (int)enemy.getX()-20, (int)enemy.getY()));
 
-=======
-            System.out.println("CHAIN HIT ENEMY");
             score += 1;
->>>>>>> ccf333c7674218d0e444bc4c1d601e0530429452
             this.getPlayer().setShotMade(false);
         }
     }
@@ -108,13 +88,9 @@ public class GameState extends State{
     public void collisionPlayerEnemy(Player player, Enemy enemy){
 
         if(player.getPlayer().intersects(enemy.getEnemy())){
-<<<<<<< HEAD
             System.out.println("DEAD");
-=======
             Player.alive = false;
             System.out.println("ENEMY HIT HERO");
-
->>>>>>> ccf333c7674218d0e444bc4c1d601e0530429452
         }
     }
 

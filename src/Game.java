@@ -33,6 +33,8 @@ public class Game{
 
         keyManager = new KeyManager();
         mouseInput = new MouseInput();
+
+        init();
     }
 
 
@@ -89,13 +91,8 @@ public class Game{
 
     public void run() {
 
-        init();
-<<<<<<< HEAD
-
         int fps = 60;
-=======
-        int fps = 120;
->>>>>>> ccf333c7674218d0e444bc4c1d601e0530429452
+
         double timePerUpdate = 1000000000 / fps;
         double delta = 0;
         long now;
@@ -120,21 +117,6 @@ public class Game{
             return;
         running = true;
         run();
-<<<<<<< HEAD
-=======
-    }
-
-    public synchronized void stop(){
-        if (!running)
-            return;
-        running = false;
-
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
->>>>>>> ccf333c7674218d0e444bc4c1d601e0530429452
     }
 
     public KeyManager getKeyManager() {
@@ -156,9 +138,4 @@ public class Game{
     public void end(){
         running = false;
     }
-
-<<<<<<< HEAD
-
-=======
->>>>>>> ccf333c7674218d0e444bc4c1d601e0530429452
 }

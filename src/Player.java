@@ -58,8 +58,6 @@ public class Player {
             moveRight();
         if(game.getKeyManager().isUp())
             shoot();
-        if(game.getKeyManager().escape())
-            State.setState(Game.menuState);
         player.x = (int) x;
     }
 

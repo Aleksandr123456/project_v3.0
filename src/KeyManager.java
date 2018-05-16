@@ -5,11 +5,7 @@ import java.awt.event.KeyListener;
 
 public class KeyManager implements KeyListener {
     private boolean[] buttons;
-<<<<<<< HEAD
     private boolean up, left, right, esc;
-=======
-    private boolean up, left, right,escape;
->>>>>>> ccf333c7674218d0e444bc4c1d601e0530429452
 
     public KeyManager(){
         buttons = new boolean[1000];
@@ -27,10 +23,6 @@ public class KeyManager implements KeyListener {
         return left;
     }
 
-    public boolean escape() {
-        return escape;
-    }
-
     public boolean isRight() { return right; }
 
 
@@ -38,12 +30,7 @@ public class KeyManager implements KeyListener {
         up = buttons[KeyEvent.VK_UP];
         left = buttons[KeyEvent.VK_LEFT];
         right = buttons[KeyEvent.VK_RIGHT];
-<<<<<<< HEAD
-
         esc = buttons[KeyEvent.VK_ESCAPE];
-=======
-        escape = buttons[KeyEvent.VK_ESCAPE];
->>>>>>> ccf333c7674218d0e444bc4c1d601e0530429452
     }
 
     @Override
