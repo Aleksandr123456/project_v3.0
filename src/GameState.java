@@ -2,9 +2,7 @@ import java.awt.*;
 
 public class GameState extends State{
     private Player player;
-    private Enemy enemy, alamenemy;
-
-    private boolean isRunning = true;
+    private Enemy enemy;
 
     public GameState(Game game){
         super(game);
@@ -22,6 +20,10 @@ public class GameState extends State{
             collisionChainEnemy(player.getChain(), enemy);
         }
         collisionPlayerEnemy(player, enemy);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3dd303a83ae7d97e8597ee161ddfa5083dbd8647
     }
 
     @Override

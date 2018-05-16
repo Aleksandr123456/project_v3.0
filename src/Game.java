@@ -12,15 +12,19 @@ public class Game{
     private Thread thread;
     private boolean running;
 
-    public int width,height;
+    public static int width,height;
     public String title;
 
     private BufferStrategy bs;
     private Graphics g;
 
     private KeyManager keyManager;
-    private State gameState, menuState, settingsState;
+    private MouseInput mouseInput;
 
+    public static State gameState;
+    public static State menuState;
+
+    public static boolean menuSTATE = true;
 
     public Game(String title, int width, int height){
         this.width = width;
@@ -28,23 +32,25 @@ public class Game{
         this.title = title;
 
         keyManager = new KeyManager();
+        mouseInput = new MouseInput();
     }
 
 
     private void init(){
         display =  new Display(title,width,height);
         display.getCanvas().addKeyListener(keyManager);
+        display.getCanvas().addMouseListener(mouseInput);
         Assets.init();
 
-        gameState = new GameState(this);
 
-        State.setState(gameState);
-    }
+        menuState = new MenuState(this);
+        gameState = new GameState(this);
+        State.setState(menuState);
+}
 
     private void update(){
         keyManager.update();
         State.getCurrentState().update();
-
 
     }
 
@@ -62,7 +68,13 @@ public class Game{
         g.clearRect(0, 0, width, height);
         //Draw here
 
-        g.drawImage(Assets.background,0 ,0 ,null);
+        if (State.getCurrentState() == menuState){
+            g.drawImage(Assets.menu_background,0,0,null);
+        }
+
+        if (State.getCurrentState() == gameState) {
+            g.drawImage(Assets.background, 0, 0, null);
+        }
 
         if(State.getCurrentState() != null )
             State.getCurrentState().draw(g);
@@ -76,7 +88,7 @@ public class Game{
 
         init();
 
-        int fps = 60;
+        int fps = 120;
         double timePerUpdate = 1000000000 / fps;
         double delta = 0;
         long now;
@@ -101,6 +113,21 @@ public class Game{
             return;
         running = true;
         run();
+<<<<<<< HEAD
+=======
+    }
+
+    public synchronized void stop(){
+        if (!running)
+            return;
+        running = false;
+
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+>>>>>>> 3dd303a83ae7d97e8597ee161ddfa5083dbd8647
     }
 
     public KeyManager getKeyManager() {

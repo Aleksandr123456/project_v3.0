@@ -3,7 +3,7 @@ import java.awt.image.BufferedImage;
 
 public class Assets {
 
-    public static BufferedImage background;
+    public static BufferedImage background, menu_background;
     private static BufferedImage[] playerRunLeft;
     private static BufferedImage[] playerRunRight;
     private static BufferedImage player;
@@ -29,6 +29,7 @@ public class Assets {
 
         player = playerImages.crop(0,0,30,70);
         background = ImageLoader.loadImage("/textures/back01.jpg");
+        menu_background = ImageLoader.loadImage("/textures/menu_back.jpg");
     }
 
     public static BufferedImage getPlayer() {
