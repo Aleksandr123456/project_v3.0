@@ -1,22 +1,36 @@
 import javafx.scene.shape.Circle;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.awt.*;
 
-public abstract class Enemy {
-    protected Game game;
-    protected float x, y;
-    protected int width, height;
-    protected double speedX = 1.5;
-    protected double speedY = 4;
-    protected double jumpHeight;
-    protected Rectangle enemy;
-    protected Color color;
-    protected Enemy child;
+public class Enemy {
+    private Game game;
+    private float x, y;
+    private int width, height;
+    private double speedX = 1.5;
+    private double speedY = 4;
+    private double jumpHeight;
+    private Rectangle enemy;
+    private List<Color> colors = new ArrayList<>();
+    private Color color;
+    private Enemy child;
 
     public Enemy(Game game, int x, int y){
         this.game = game;
         this.x = x;
         this.y = y;
+        this.width = 20;
+        this.height = 20;
+
+        this.enemy = new Rectangle(x,y,width,height);
+
+        colors.addAll(Arrays.asList(Color.RED,Color.GREEN,Color.CYAN,Color.BLUE,Color.MAGENTA));
+        int index = (int) Math.round(Math.random()*colors.size()-1);
+        if(index == -1)
+            index = 0;
+        this.color = colors.get(index);
     }
 
     public void update(){
