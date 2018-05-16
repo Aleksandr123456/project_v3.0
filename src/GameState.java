@@ -13,8 +13,8 @@ public class GameState extends State{
         super(game);
         player = new Player(game,200,game.getHeight() - Assets.getPlayer().getHeight());
 
-        Enemy enemy1 = new Enemy01(game,100,game.getHeight() - 100);
-        Enemy enemy2 = new Enemy02(game, 400, game.getHeight() - 200);
+        Enemy enemy1 = new Enemy(game,getRandomXPos(),game.getHeight() - 100);
+        Enemy enemy2 = new Enemy(game, getRandomXPos(), game.getHeight() - 200);
         enemies.add(enemy1);
         enemies.add(enemy2);
     }
@@ -73,25 +73,31 @@ public class GameState extends State{
         return player;
     }
 
-    public void collisionChainEnemy(Chain chain, Enemy enemy){
+    private void collisionChainEnemy(Chain chain, Enemy enemy){
 
         if(chain.getChain().intersects(enemy.getEnemy())){
             deadEnemy = enemy;
 
-            newEnemies.add(new Enemy01(game, (int)enemy.getX()-20, (int)enemy.getY()));
+            newEnemies.add(new Enemy(game, (int)enemy.getX()-40, (int)enemy.getY()-20));
+            newEnemies.add(new Enemy(game, (int)enemy.getX()+40, (int)enemy.getY()-20));
+            newEnemies.get(0).setSpeedX(-1.5);
 
             score += 1;
             this.getPlayer().setShotMade(false);
         }
     }
 
-    public void collisionPlayerEnemy(Player player, Enemy enemy){
+    private void collisionPlayerEnemy(Player player, Enemy enemy){
 
         if(player.getPlayer().intersects(enemy.getEnemy())){
             System.out.println("DEAD");
             Player.alive = false;
             System.out.println("ENEMY HIT HERO");
         }
+    }
+
+    private int getRandomXPos(){
+        return (int) Math.round(Math.random()*game.getWidth());
     }
 
     public List<Enemy> getEnemies() {
