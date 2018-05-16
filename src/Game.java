@@ -9,7 +9,6 @@ import java.awt.image.BufferStrategy;
 public class Game{
 
     private Display display;
-    private Thread thread;
     private boolean running;
 
     public static int width,height;
@@ -26,9 +25,9 @@ public class Game{
 
     public static boolean menuSTATE = true;
 
-    public Game(String title, int width, int height){
-        this.width = width;
-        this.height = height;
+    public Game(String title){
+        this.width = 1024;
+        this.height = 512;
         this.title = title;
 
         keyManager = new KeyManager();
@@ -54,7 +53,6 @@ public class Game{
 
     }
 
-    int h = 200,y = 200;
     private void render() {
         bs = display.getCanvas().getBufferStrategy();
 
@@ -88,7 +86,7 @@ public class Game{
 
         init();
 
-        int fps = 120;
+        int fps = 60;
         double timePerUpdate = 1000000000 / fps;
         double delta = 0;
         long now;
@@ -113,21 +111,6 @@ public class Game{
             return;
         running = true;
         run();
-<<<<<<< HEAD
-=======
-    }
-
-    public synchronized void stop(){
-        if (!running)
-            return;
-        running = false;
-
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
->>>>>>> 3dd303a83ae7d97e8597ee161ddfa5083dbd8647
     }
 
     public KeyManager getKeyManager() {
@@ -149,4 +132,6 @@ public class Game{
     public void end(){
         running = false;
     }
+
+
 }
