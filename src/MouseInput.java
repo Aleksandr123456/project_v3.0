@@ -2,6 +2,7 @@ import javafx.scene.media.AudioClip;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 
 public class MouseInput implements MouseListener {
 
@@ -35,6 +36,13 @@ public class MouseInput implements MouseListener {
                     State.setState(Game.menuState);
                     Player.alive = true;
                     Player.x = 30;
+
+                    try{
+                        SaverLoader sl = new SaverLoader();
+                        sl.save(String.valueOf(GameState.score));
+                    }catch (IOException exp){
+                        throw new RuntimeException(exp);
+                    }
                     GameState.reset();
                 }
                 if (mx >= Player.no.x & mx <= Player.no.x+150 & my >= Player.no.y & my <= Player.no.y+70){

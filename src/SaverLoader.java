@@ -1,20 +1,22 @@
 import java.io.*;
+import java.util.Scanner;
 
 public class SaverLoader {
 
-    public void save(String name, int score) throws IOException{
-        BufferedWriter tekstVälja = new BufferedWriter
-                (new OutputStreamWriter(new FileOutputStream("leaderboard.dat"), "UTF-8"));
+    public void save(String score) throws IOException{
+        File file = new File("leaderboard.txt");
+        PrintWriter pw = new PrintWriter(file);
 
-        tekstVälja.write(name + " " + score);
+        pw.write(score);
+        pw.close();
     }
 
-    public String[] load() throws IOException{
-        String[] values = new String[2];
-        DataInputStream dis = new DataInputStream(new FileInputStream("leaderboard.dat"));
-        values[0] = dis.readUTF();
-        values[1] = String.valueOf(dis.readInt());
-        dis.close();
-        return values;
+    public String load() throws IOException{
+        File file = new File("leaderboard.txt");
+        Scanner sc = new Scanner(file);
+        String score = sc.nextLine();
+        sc.close();
+
+        return score;
     }
 }
