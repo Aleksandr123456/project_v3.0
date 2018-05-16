@@ -1,3 +1,5 @@
+import javafx.scene.input.MouseEvent;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -17,9 +19,8 @@ public class KeyManager implements KeyListener {
         return left;
     }
 
-    public boolean isRight() {
-        return right;
-    }
+    public boolean isRight() { return right; }
+
 
     public void update(){
         up = buttons[KeyEvent.VK_UP];

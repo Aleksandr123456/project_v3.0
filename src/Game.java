@@ -6,21 +6,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferStrategy;
 
-public class Game implements Runnable{
+public class Game{
 
     private Display display;
     private Thread thread;
     private boolean running;
 
-    public int width,height;
+    public static int width,height;
     public String title;
 
     private BufferStrategy bs;
     private Graphics g;
 
     private KeyManager keyManager;
-    private State gameState, menuState, settingsState;
+    private MouseInput mouseInput;
 
+    public static State gameState;
+    public static State menuState;
+
+    public static boolean menuSTATE = true;
 
     public Game(String title, int width, int height){
         this.width = width;
@@ -28,23 +32,25 @@ public class Game implements Runnable{
         this.title = title;
 
         keyManager = new KeyManager();
+        mouseInput = new MouseInput();
     }
 
 
     private void init(){
         display =  new Display(title,width,height);
         display.getCanvas().addKeyListener(keyManager);
+        display.getCanvas().addMouseListener(mouseInput);
         Assets.init();
 
-        gameState = new GameState(this);
 
-        State.setState(gameState);
-    }
+        menuState = new MenuState(this);
+        gameState = new GameState(this);
+        State.setState(menuState);
+}
 
     private void update(){
         keyManager.update();
         State.getCurrentState().update();
-
 
     }
 
@@ -62,7 +68,13 @@ public class Game implements Runnable{
         g.clearRect(0, 0, width, height);
         //Draw here
 
-        g.drawImage(Assets.background,0 ,0 ,null);
+        if (State.getCurrentState() == menuState){
+            g.drawImage(Assets.menu_background,0,0,null);
+        }
+
+        if (State.getCurrentState() == gameState) {
+            g.drawImage(Assets.background, 0, 0, null);
+        }
 
         if(State.getCurrentState() != null )
             State.getCurrentState().draw(g);
@@ -76,7 +88,7 @@ public class Game implements Runnable{
 
         init();
 
-        int fps = 60;
+        int fps = 120;
         double timePerUpdate = 1000000000 / fps;
         double delta = 0;
         long now;
@@ -100,8 +112,7 @@ public class Game implements Runnable{
         if (running)
             return;
         running = true;
-        thread = new Thread(this);
-        thread.start();
+        run();
     }
 
     public synchronized void stop(){

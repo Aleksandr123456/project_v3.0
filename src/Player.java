@@ -10,7 +10,6 @@ public class Player {
     private int width, height;
     private int speed = 4;
     private Rectangle player;
-    private int playerHealth = 3;
 
     private Chain chain;
     private boolean shotMade = false;
@@ -102,12 +101,4 @@ public class Player {
         return player;
     }
 
-    public void setPlayerHealth(int playerHealth) {
-        this.playerHealth = playerHealth;
-    }
-
-    public int getPlayerHealth() {
-
-        return playerHealth;
-    }
 }

@@ -2,9 +2,7 @@ import java.awt.*;
 
 public class GameState extends State{
     private Player player;
-    private Enemy enemy, alamenemy;
-
-    private boolean isRunning = true;
+    private Enemy enemy;
 
     public GameState(Game game){
         super(game);
@@ -23,7 +21,6 @@ public class GameState extends State{
         }
         collisionPlayerEnemy(player, enemy);
 
-        collisionPlayerEnemy(player, enemy);
     }
 
     @Override
