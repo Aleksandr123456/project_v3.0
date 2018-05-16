@@ -4,23 +4,31 @@ import java.util.List;
 
 public class GameState extends State{
     private Player player;
-    private List<Enemy> enemies = new LinkedList<>();
+    private static List<Enemy> enemies = new LinkedList<>();
     private List<Enemy> newEnemies = new LinkedList<>();
     private Enemy deadEnemy;
     public static int score = 0;
 
     public GameState(Game game){
         super(game);
+        init();
+    }
+
+    private void init(){
         player = new Player(game,200,game.getHeight() - Assets.getPlayer().getHeight());
 
         Enemy enemy1 = new Enemy(game,getRandomXPos(),game.getHeight() - 100);
         Enemy enemy2 = new Enemy(game, getRandomXPos(), game.getHeight() - 200);
+        enemies.clear();
         enemies.add(enemy1);
         enemies.add(enemy2);
     }
 
     @Override
     public void update() {
+        if(player == null | enemies.size() == 0)
+            init();
+
         if(enemies.size() == 0)
             System.exit(1);
         if(game.getKeyManager().isEsc())
@@ -53,6 +61,8 @@ public class GameState extends State{
 
     @Override
     public void draw(Graphics g) {
+        if(player == null | enemies.size() == 0)
+            init();
 
         if(player.isShotMade())
             player.getChain().draw(g);
@@ -98,6 +108,11 @@ public class GameState extends State{
 
     private int getRandomXPos(){
         return (int) Math.round(Math.random()*game.getWidth());
+    }
+
+    public static void reset(){
+        score = 0;
+        enemies.clear();
     }
 
     public List<Enemy> getEnemies() {
