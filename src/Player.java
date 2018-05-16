@@ -6,7 +6,7 @@ public class Player {
     private Animation animationRight;
 
     private Game game;
-    private float x, y;
+    public static float x, y;
     private int width, height;
     private int speed = 4;
     private Rectangle player;

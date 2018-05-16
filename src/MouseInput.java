@@ -42,10 +42,12 @@ public class MouseInput implements MouseListener {
                 if (mx >= Player.yes.x & mx <= Player.yes.x+150 & my >= Player.yes.y & my <= Player.yes.y+70){
                     State.setState(Game.menuState);
                     Player.alive = true;
+                    Player.x = 30;
                 }
                 if (mx >= Player.no.x & mx <= Player.no.x+150 & my >= Player.no.y & my <= Player.no.y+70){
                     State.setState(Game.menuState);
                     Player.alive = true;
+                    Player.x = 30;
                 }
             }
         }
