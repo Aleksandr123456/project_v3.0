@@ -6,13 +6,16 @@ public class Chain {
     private int speed = 9;
     private Rectangle chain;
     private GameState game;
+    private Player player;
 
     public Chain(GameState game,int x, int y) {
         this.game = game;
         this.x = x;
         this.y = y;
 
-        chain = new Rectangle(x, y,width,0);
+        player = game.getPlayer();
+        chain = new Rectangle((int)(player.getX() + player.getWidth()/2 - width/2),
+                y,width,0);
     }
 
     public void update(){
@@ -29,8 +32,7 @@ public class Chain {
 
     public void draw(Graphics g){
         g.setColor(Color.BLUE);
-        g.fillRect(chain.x + game.getPlayer().getWidth() / 2 - width / 2,
-                chain.y,chain.width,chain.height + game.getPlayer().getHeight());
+        g.fillRect(chain.x, chain.y,chain.width,chain.height + game.getPlayer().getHeight());
     }
 
     public int getHeight() {

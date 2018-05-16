@@ -7,7 +7,7 @@ public class GameState extends State{
     public GameState(Game game){
         super(game);
         player = new Player(game,200,game.getHeight() - Assets.getPlayer().getHeight());
-        enemy = new Enemy01(game,100,70);
+        enemy = new Enemy01(game,100,game.getHeight()-100);
     }
 
     @Override

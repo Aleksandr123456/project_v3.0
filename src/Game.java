@@ -109,7 +109,7 @@ public class Game{
                 delta--;
             }
         }
-        stop();
+        System.exit(1);
     }
 
     public synchronized void start(){

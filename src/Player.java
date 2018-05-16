@@ -84,6 +84,14 @@ public class Player {
         this.shotMade = shotMade;
     }
 
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
     public int getWidth() {
         return width;
     }

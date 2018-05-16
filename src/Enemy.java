@@ -6,8 +6,9 @@ public abstract class Enemy {
     protected Game game;
     protected float x, y;
     protected int width, height;
-    protected double speedX = 4;
+    protected double speedX = 1.5;
     protected double speedY = 4;
+    protected double jumpHeight;
     protected Rectangle enemy;
 
 
@@ -16,9 +17,6 @@ public abstract class Enemy {
         this.game = game;
         this.x = x;
         this.y = y;
-        this.width = 80;
-        this.height = 80;
-        this.enemy = new Rectangle(x,y,width,height);
     }
 
     public void update(){
