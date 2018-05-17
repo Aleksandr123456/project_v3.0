@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="resorces" type="kotlin.js">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/resorces" />
+      <root url="file://$PROJECT_DIR$/resources" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
